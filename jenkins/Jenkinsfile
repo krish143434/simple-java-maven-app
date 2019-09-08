@@ -21,6 +21,11 @@ pipeline {
             post {
                 always {
                     junit 'target/surefire-reports/*.xml'
+                   
+                   emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n ${BUILD_LOG, maxLines, escapeHtml}\n More info at: ${env.BUILD_URL}",
+                  recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
+                  subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
+                    
                 }
             }
         }
