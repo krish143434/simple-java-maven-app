@@ -1,6 +1,13 @@
+node {
+   stage('Git Clone') { // for display purposes
+      // Get some code from a GitHub repository
+      git 'https://github.com/jenkins-docs/simple-java-maven-app.git'
+    
+   }
+}
+
 pipeline {
     agent any
-    }
     stages {
         stage('Build') {
             steps {
