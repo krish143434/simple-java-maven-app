@@ -24,4 +24,4 @@ jobs:
     steps:
       - checkout
 
-      - run: mnv clean install package
+      - run: mvn clean install package
